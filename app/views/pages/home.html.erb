@@ -1,9 +1,16 @@
-<h1>Login</h1>
+<div class="wrapper">
+	<div class="container">
+		<h1 class="title">Github OmniAuth Login</h1>
+		<div class="user__container">
+			<% if user_signed_in? %>
+				<img src="<%= current_user.image %>" alt="profile picture" class="user__image">
+				<p class="user__info">Username: <%= current_user.name %></p>
+				<p class="user__info">Email: <%= current_user.email %></p>
 
-<% if user_signed_in? %>
-<%= current_user.email %>
-<%= current_user.name %>
-<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-<% else %>
-<%= link_to "Sign in with Github", user_github_omniauth_authorize_path %>
-<% end %>
+				<%= link_to 'Logout', destroy_user_session_path, method: :delete , class: "user__link" %>
+			<% else %>
+				<%= link_to "Sign in with GitHub", user_github_omniauth_authorize_path, class: "user__link" %>
+			<% end %>
+		</div>
+	</div>
+</div>
